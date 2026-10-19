@@ -11,3 +11,4 @@ namespace ContactBook.Interfaces
         bool Delete(int id);
     }
 }
+//zmena
