@@ -1,0 +1,33 @@
+﻿
+@using ContactBook.Models;
+
+@model Contact
+<div class="container">
+	<form class="form-control" asp-action="ContactDetail" method="post" asp-controller="Home">
+		<div class="mb-3">
+			<label for="FirstName" class="form-label" asp-for="FirstName">First name</label>
+			<input class="form-control" id="FirstName" name="FirstName" type="text" value="@Model.FirstName" asp-for="FirstName" />
+		</div>
+		<div class="mb-3">
+			<label for="LastName" class="form-label" asp-for="LastName">Last name</label>
+			<input class="form-control" id="LastName" name="LastName" type="text" value="@Model.LastName" asp-for="LastName" />
+		</div>
+		<div class="mb-3">
+			<label for="Email" class="form-label" asp-for="Email">Email</label>
+			<input class="form-control" id="Email" name="Email" type="text" value="@Model.Email" asp-for="Email" />
+		</div>
+		<div class="mb-3">
+			<button type="submit" class="btn btn-primary">Update</button>
+		</div>
+	</form>
+	<form class="form-control" asp-action="ContactDelete" method="post" asp-controller="Home">
+		<div class="mb-3">
+			<label for="Id" class="form-label" asp-for="Id" hidden>First name</label>
+			<input class="form-control" id="Id" name="Id" type="text" value="@Model.Id" asp-for="Id" hidden />
+		</div>
+		<div class="mb-3">
+			<button type="submit" class="btn btn-danger">Delete</button>
+		</div>
+		
+	</form>
+</div>

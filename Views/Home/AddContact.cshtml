@@ -1,0 +1,22 @@
+﻿@using ContactBook.Models;
+
+@model Contact
+<div class="containter-sm">
+	<form class="form-control" asp-controller="Home" asp-action="AddContact" method="post">
+	<div class="mb-3">
+		<label class="form-label" asp-for="FirstName">First Name</label>
+		<input type="text" placeholder="Ján" asp-for="FirstName" id="FirstName" class="form-control" />
+	</div>
+	<div class="mb-3">
+		<label class="form-label" asp-for="LastName">Last Name</label>
+		<input type="text" placeholder="Novák" asp-for="LastName" id="LastName" class="form-control" />
+	</div>
+	<div class="mb-3">
+		<label class="form-label" asp-for="Email">Email</label>
+		<input type="text" placeholder="example@email.com" asp-for="Email" id="Email" class="form-control" />
+	</div>
+		<div class="mb-3">
+			<button type="submit" class="btn btn-primary">Add</button>
+		</div>
+	</form>
+</div>

@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model List<Contact>
+<div class="text-center">
+    @foreach(var contact in Model){
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ContactDetail" asp-route-id="@contact.Id">
+            <div class="card">
+                <h1>@contact.FirstName @contact.LastName</h1>
+                <p>Email: @contact.Email</p>
+            </div>
+        </a>
+
+    }
+</div>
