@@ -10,9 +10,9 @@
         public string? Phone { get; set; }
    
 
-        public ICollection<ContactNote> ContactNotes { get; set; } = new List<ContactNote>();
-        public ICollection<ContactTag> ContactTags { get; set; } = new List<ContactTag>();
+        public List<Note> Notes { get; set; } = new List<Note>();
+        public List<ContactTag> ContactTags { get; set; } = new List<ContactTag>();
 
     }
 }
-//zmena
+

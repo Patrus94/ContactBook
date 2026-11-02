@@ -19,11 +19,25 @@ namespace ContactBook
 
         }
         public DbSet<Contact> Contacts => Set<Contact>();
-        public DbSet<ContactNote> ContactNotes => Set<ContactNote>();
-        public DbSet<ContactTag> ContactTags => Set<ContactTag>();
+        public DbSet<Note>Notes => Set<Note>();
+        public DbSet<Tag>Tags => Set<Tag>();
+        public DbSet<ContactTag>ContacTags => Set<ContactTag>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<ContactTag>()
+                .HasKey(c => new { c.ContactId, c.TagId });
+
+            modelBuilder.Entity<ContactTag>()
+                .HasOne(c => c.Contact)
+                .WithMany(c => c.ContactTags)
+                .HasForeignKey(c => c.ContactId);
+
+            modelBuilder.Entity<ContactTag>()
+                .HasOne(c => c.Tag)
+                .WithMany(c => c.ContactTags)
+                .HasForeignKey(c => c.TagId);
+            
             modelBuilder.Entity<Contact>(entity => {
                 entity.Property(c => c.FullName)
                 .HasMaxLength(120)
@@ -35,8 +49,15 @@ namespace ContactBook
 
                 entity.HasIndex(c => c.Email)
                 .IsUnique();
+
+                entity.HasMany(c => c.Notes)
+                .WithOne(n => n.Contact)
+                .HasForeignKey(n => n.ContactId)
+                .OnDelete(DeleteBehavior.Cascade);
                 
             });
+
+
          
         }
 
